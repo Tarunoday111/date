@@ -21,6 +21,9 @@
             background-color: #f0f0f0;
             overflow: hidden;
         }
+        .hidden {
+            display: none;
+        }
         h1 {
             color: #333;
             font-size: 36px;
@@ -73,16 +76,35 @@
 </head>
 <body>
     <div id="celebration">🎉 Yay! Let's go out! 🎉</div>
-    <h1>Will You Go Out With Me?</h1>
-    <div class="buttons">
-        <button id="yes">Yes</button>
-        <button id="no">No</button>
+    
+    <div id="intro">
+        <h1>Hi raa Kanna!</h1>
+        <p>I've been meaning to ask you something really important.</p>
+        <p>really really important.</p>
+        <p>But first, let's build up a little suspense...</p>
+        <button id="next">Next</button>
+    </div>
+    
+    <div id="mainQuestion" class="hidden">
+        <h1>Will You Go Out With Me?</h1>
+        <div class="buttons">
+            <button id="yes">Yes</button>
+            <button id="no">No</button>
+        </div>
     </div>
 
     <script>
+        const nextButton = document.getElementById('next');
+        const intro = document.getElementById('intro');
+        const mainQuestion = document.getElementById('mainQuestion');
         const yesButton = document.getElementById('yes');
         const noButton = document.getElementById('no');
         const celebration = document.getElementById('celebration');
+
+        nextButton.addEventListener('click', () => {
+            intro.classList.add('hidden');
+            mainQuestion.classList.remove('hidden');
+        });
 
         yesButton.addEventListener('click', showCelebration);
         noButton.addEventListener('mouseover', moveButton);
